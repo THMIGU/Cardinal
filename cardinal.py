@@ -1,6 +1,6 @@
 import os
 
-import config
+from utils import config
 
 import discord
 from discord.ext import commands
@@ -31,8 +31,15 @@ async def on_ready() -> None:
 	await cardinal.tree.sync()
 
 
-if __name__ == "__main__":
+def main() -> None:
 	conf = config.load()
+	if not conf:
+		return
+
 	token = conf["token"]
 
 	cardinal.run(token)
+
+
+if __name__ == "__main__":
+	main()
