@@ -1,3 +1,13 @@
+# ***********************************************
+# *  Project     : Cardinal
+# *  File        : cardinal.py
+# *  Author      : Kai Parsons
+# *  Date        : 2026-02-10
+# *  Description : Mod. & game bot for Ess. Ress.
+# ***********************************************
+
+# The third time I'm trying to make this bot...
+
 import os
 
 from utils import config
@@ -37,7 +47,6 @@ def main() -> None:
 		return
 
 	token = conf["token"]
-
 	cardinal.run(token)
 
 

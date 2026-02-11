@@ -1,3 +1,13 @@
+# ***********************************************
+# *  Project     : Cardinal
+# *  File        : config.py
+# *  Author      : Kai Parsons
+# *  Date        : 2026-02-10
+# *  Description : Mod. & game bot for Ess. Ress.
+# ***********************************************
+
+# Load config file, create if missing.
+
 from typing import Any
 from pathlib import Path
 import yaml
