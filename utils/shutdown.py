@@ -8,5 +8,10 @@
 
 # Shutdown Cardinal safely
 
-def shutdown_safely() -> None:
-	exit(0)
+from discord.ext import commands
+
+
+async def shutdown_safely(bot: commands.Bot) -> None:
+	print("Shutting down!")
+
+	await bot.close()

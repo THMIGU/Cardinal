@@ -49,10 +49,9 @@ def about_embed(user: ClientUser) -> Embed:
 	return embed
 
 
-def shutdown_embed(user: ClientUser) -> Embed:
+def shutdown_embed() -> Embed:
 	embed = Embed(
-		title="Shutdown",
-		description=f"Shutting down {user.mention}!",
+		title=f"🔌 Shutting down Cardinal!",
 		color=0xc41e3a,
 	)
 

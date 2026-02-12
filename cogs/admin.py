@@ -27,12 +27,10 @@ class Admin(commands.Cog):
 	)
 	@discord.app_commands.default_permissions(manage_messages=True)
 	async def shutdown(self, interaction: discord.Interaction) -> None:
-		user = self.bot.user
-
-		shutdown_embed_ = shutdown_embed(user)
+		shutdown_embed_ = shutdown_embed()
 		await interaction.response.send_message(embed=shutdown_embed_)
 
-		shutdown_safely()
+		await shutdown_safely(self.bot)
 
 
 async def setup(bot: commands.Bot) -> None:
