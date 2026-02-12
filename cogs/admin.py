@@ -2,14 +2,17 @@
 # *  Project     : Cardinal
 # *  File        : cogs/admin.py
 # *  Author      : Kai Parsons
-# *  Date        : 2026-02-10
+# *  Date        : 2026-02-11
 # *  Description : Mod. & game bot for Ess. Ress.
 # ***********************************************
 
-# Admin-only commands (nothing rn)
+# Admin-only commands
 
 import discord
 from discord.ext import commands
+
+from utils.embeds import shutdown_embed
+from utils.shutdown import shutdown_safely
 
 
 class Admin(commands.Cog):
@@ -24,7 +27,12 @@ class Admin(commands.Cog):
 	)
 	@discord.app_commands.default_permissions(manage_messages=True)
 	async def shutdown(self, interaction: discord.Interaction) -> None:
-		await interaction.response.send_message("plaecholderfds :tanabata_tree:")
+		user = self.bot.user
+
+		shutdown_embed_ = shutdown_embed(user)
+		await interaction.response.send_message(embed=shutdown_embed_)
+
+		shutdown_safely()
 
 
 async def setup(bot: commands.Bot) -> None:

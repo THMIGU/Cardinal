@@ -1,8 +1,8 @@
 # ***********************************************
 # *  Project     : Cardinal
-# *  File        : config.py
+# *  File        : utils/config.py
 # *  Author      : Kai Parsons
-# *  Date        : 2026-02-10
+# *  Date        : 2026-02-11
 # *  Description : Mod. & game bot for Ess. Ress.
 # ***********************************************
 
