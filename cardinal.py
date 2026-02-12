@@ -10,7 +10,8 @@
 
 import os
 
-from utils import config
+import config
+from services import redis_
 
 import discord
 from discord.ext import commands
@@ -39,6 +40,8 @@ cardinal = Cardinal()
 async def on_ready() -> None:
 	print(f"Logged in as {cardinal.user}")
 	await cardinal.tree.sync()
+
+	await redis_.subscribe(cardinal)
 
 
 def main() -> None:

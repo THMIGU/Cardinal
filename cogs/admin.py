@@ -8,11 +8,11 @@
 
 # Admin-only commands
 
+from utils import embeds
+from utils import shutdown
+
 import discord
 from discord.ext import commands
-
-from utils.embeds import shutdown_embed
-from utils.shutdown import shutdown_safely
 
 
 class Admin(commands.Cog):
@@ -27,10 +27,10 @@ class Admin(commands.Cog):
 	)
 	@discord.app_commands.default_permissions(manage_messages=True)
 	async def shutdown(self, interaction: discord.Interaction) -> None:
-		shutdown_embed_ = shutdown_embed()
-		await interaction.response.send_message(embed=shutdown_embed_)
+		shutdown_embed = embeds.shutdown_embed()
+		await interaction.response.send_message(embed=shutdown_embed)
 
-		await shutdown_safely(self.bot)
+		await shutdown.shutdown_safely(self.bot)
 
 
 async def setup(bot: commands.Bot) -> None:

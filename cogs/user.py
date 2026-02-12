@@ -8,10 +8,10 @@
 
 # User-accessible commands
 
+from utils import embeds
+
 import discord
 from discord.ext import commands
-
-from utils.embeds import about_embed
 
 
 class User(commands.Cog):
@@ -27,8 +27,8 @@ class User(commands.Cog):
 	async def about(self, interaction: discord.Interaction) -> None:
 		user = self.bot.user
 
-		about_embed_ = about_embed(user)
-		await interaction.response.send_message(embed=about_embed_)
+		about_embed = embeds.about_embed(user)
+		await interaction.response.send_message(embed=about_embed)
 
 
 async def setup(bot: commands.Bot) -> None:
