@@ -18,14 +18,14 @@ from discord.ext import commands
 class User(commands.Cog):
 	bot: commands.Bot
 
-	def __init__(self, bot: commands.Bot):
+	def __init__(self, bot: commands.Bot) -> None:
 		self.bot = bot
 
 	@discord.app_commands.command(
 		name="about",
 		description="Get information about Cardinal",
 	)
-	async def about(self, interaction: discord.Interaction):
+	async def about(self, interaction: discord.Interaction) -> None:
 		github = Github()
 		repo = github.get_repo("THMIGU/Cardinal")
 		commits = repo.get_commits().totalCount
@@ -45,5 +45,5 @@ class User(commands.Cog):
 		await interaction.response.send_message(embed=about_embed)
 
 
-async def setup(bot: commands.Bot):
+async def setup(bot: commands.Bot) -> None:
 	await bot.add_cog(User(bot))
