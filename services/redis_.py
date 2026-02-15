@@ -2,31 +2,30 @@
 # *  Project     : Cardinal
 # *  File        : services/redis_.py
 # *  Author      : Kai Parsons
-# *  Date        : 2026-02-11
+# *  Date        : 2026-02-15
 # *  Description : Mod. & game bot for Ess. Ress.
 # ***********************************************
 
 # Message sending through Redis
 
 import asyncio
-import redis
+from redis import Redis
 from typing import Any, Generator
 
 import config
+from data import logger
 
 from discord.ext import commands
 
 
 async def send_message(msg: bytes, bot: commands.Bot) -> None:
-	conf = config.load()
-	shutdown_uuid = conf["shutdown-uuid"]
-
 	message = msg.decode()
-	if message == shutdown_uuid:
+	if message == "__shutdown__":
 		return
 
-	print(f"Received message from Redis: {message}")
+	logger.log("redis-receive", message=message)
 
+	conf = config.load()
 	channel_id = conf["channel"]
 	channel = bot.get_channel(channel_id)
 
@@ -38,7 +37,7 @@ def listen() -> Generator[str | bytes, Any, None]:
 	host = conf["redis-host"]
 	port = conf["redis-port"]
 
-	r = redis.Redis(host=host, port=port, db=0)
+	r = Redis(host=host, port=port, db=0)
 	pubsub = r.pubsub()
 	pubsub.subscribe("cardinal:message")
 
@@ -58,6 +57,6 @@ def publish(message: str) -> None:
 	host = conf["redis-host"]
 	port = conf["redis-port"]
 
-	r = redis.Redis(host=host, port=port, db=0)
+	r = Redis(host=host, port=port, db=0)
 
 	r.publish("cardinal:message", message)

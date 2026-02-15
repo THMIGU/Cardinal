@@ -2,7 +2,7 @@
 # *  Project     : Cardinal
 # *  File        : utils/embeds.py
 # *  Author      : Kai Parsons
-# *  Date        : 2026-02-11
+# *  Date        : 2026-02-15
 # *  Description : Mod. & game bot for Ess. Ress.
 # ***********************************************
 
@@ -10,12 +10,14 @@
 
 from github import Github
 
+from utils import lang
+
 from discord import Embed, ClientUser
 
 
 def success_embed(message: str) -> Embed:
 	embed = Embed(
-		title=f"✅ {message}",
+		title=lang.get("success-title", message=message),
 		color=0x32CD32,
 	)
 
@@ -24,7 +26,7 @@ def success_embed(message: str) -> Embed:
 
 def fail_embed(message: str) -> Embed:
 	embed = Embed(
-		title=f"❌ {message}",
+		title=lang.get("fail-title", message=message),
 		color=0xE34234,
 	)
 
@@ -37,21 +39,24 @@ def about_embed(user: ClientUser) -> Embed:
 	commits = repo.get_commits().totalCount
 
 	embed = Embed(
-		title="About",
-		description=f"{user.mention} is the official moderation\nand game bot of the Ess. Ress. Server!\n\n"
-		f"[GitHub Repo](https://www.github.com/THMIGU/Cardinal) (**{commits}** total commits)",
+		title=lang.get("about-title"),
+		description=lang.get(
+			"about-desc",
+			mention=user.mention,
+			commits=commits,
+		),
 		color=0xc41e3a,
 	)
 
 	embed.set_thumbnail(url=user.avatar)
-	embed.set_footer(text="Created by THMIGU")
+	embed.set_footer(text=lang.get("about-footer"))
 
 	return embed
 
 
 def shutdown_embed() -> Embed:
 	embed = Embed(
-		title=f"🔌 Shutting down Cardinal!",
+		title=lang.get("shutdown-title"),
 		color=0xc41e3a,
 	)
 

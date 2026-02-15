@@ -1,0 +1,47 @@
+# Logs
+
+log-version: "Cardinal v{version} | {date}"
+log-header: |
+  ┏┓     ┓•    ┓
+  ┃ ┏┓┏┓┏┫┓┏┓┏┓┃
+  ┗┛┗┻┗ ┗┻┗┗┗┗┻┗ ᵇʸ ᵀᴴᴹᴵᴳᵁ
+  {log_version}
+  {separator}
+
+terminal-log: "<bold><lcyan>[<lyellow>{date}<lcyan>]<reset> {message}"
+file-log: "[{date}] {message}"
+
+flush-logs: Logs flushed!
+
+logged-in: "Logged in as <green><bold>{user}<reset> ({id})"
+session-id: "<green><bold>Session ID:<reset> {id}"
+logged-out: Logged out of client
+
+supply-token: Please supply a token in the config file!
+
+config-missing: Config file not found, creating a new one...
+config-empty: Config file is empty!
+
+redis-receive: "Received message from <green><bold>Redis<reset>: {message}"
+
+shutdown: Shutting down!
+
+# Bot
+
+## Success Embed
+success-title: "✅ {message}"
+
+## Fail Embed:
+fail-title: "❌ {message}"
+
+## About Embed
+about-title: About
+about-desc: |
+  {mention} is the official moderation
+  and game bot of the Ess. Ress. Server!
+  
+  [GitHub Repo](https://www.github.com/THMIGU/Cardinal) (**{commits}** total commits)
+about-footer: Created by THMIGU
+
+## Shutdown Embed
+shutdown-title: 🔌 Shutting down Cardinal!

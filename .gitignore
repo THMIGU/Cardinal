@@ -1,11 +1,12 @@
-config.yml
-tdcb-config.yml
-data.json
+/config.yml
+/tdcb-config.yml
+/data.json
+/override.sh
 
 /__pycache__
 */__pycache__
 
 /.idea
-/.venv
 
 /tests
+/logs

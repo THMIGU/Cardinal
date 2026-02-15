@@ -2,7 +2,7 @@
 # *  Project     : Cardinal
 # *  File        : cogs/user.py
 # *  Author      : Kai Parsons
-# *  Date        : 2026-02-11
+# *  Date        : 2026-02-15
 # *  Description : Mod. & game bot for Ess. Ress.
 # ***********************************************
 
