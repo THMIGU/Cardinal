@@ -62,7 +62,7 @@ def init() -> None:
 		date=str(datetime.now())[:-7]
 	)
 
-	log_file_path = f"logs/log{datetime.now().strftime('-%b-%d-%H_%M_%S')}.txt"
+	log_file_path = f"logs/log{datetime.now().strftime('-%b-%d-%H_%M_%S').lower()}.txt"
 	log_file = open(log_file_path, "x", encoding="utf-8")
 	log_file.write(
 		lang.get(
