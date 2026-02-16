@@ -43,7 +43,7 @@ class OnMessage(commands.Cog):
 			msg_id=msg_id,
 			username=username,
 			user_id=user_id,
-			message=msg + attachments,
+			message=f"{msg} {attachments}",
 			channel_id=channel_id,
 			server_id=server_id,
 		)
