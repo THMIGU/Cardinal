@@ -8,14 +8,12 @@
 
 # The third time I'm trying to make this bot...
 
-import os
+import config
+from data import logger
+from utils import cogs
 
 import discord
 from discord.ext import commands
-
-import config
-from data import logger
-from services import redis_, flush
 
 intents = discord.Intents.all()
 
@@ -28,32 +26,10 @@ class Cardinal(commands.Bot):
 		)
 
 	async def setup_hook(self) -> None:
-		for filename in os.listdir("./cogs"):
-			if not filename.endswith(".py"):
-				continue
-			await self.load_extension(f"cogs.{filename[:-3]}")
+		await cogs.load(self.load_extension)
 
 
 cardinal = Cardinal()
-
-
-@cardinal.event
-async def on_ready() -> None:
-	flush.flush_logs.start()
-
-	logger.log(
-		"logged-in",
-		user=cardinal.user,
-		id=cardinal.user.id,
-	)
-	logger.log(
-		"session-id",
-		id=cardinal.ws.session_id,
-	)
-
-	await cardinal.tree.sync()
-
-	await redis_.subscribe(cardinal)
 
 
 def main() -> None:

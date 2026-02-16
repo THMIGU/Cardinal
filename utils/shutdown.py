@@ -1,6 +1,6 @@
 # ***********************************************
 # *  Project     : Cardinal
-# *  File        : cogs/shutdown.py
+# *  File        : commands/shutdown.py
 # *  Author      : Kai Parsons
 # *  Date        : 2026-02-15
 # *  Description : Mod. & game bot for Ess. Ress.
