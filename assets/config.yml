@@ -1,4 +1,5 @@
 token: TOKEN
+server: SERVER
 channel: CHANNEL
 redis-host: localhost
 redis-port: 6379

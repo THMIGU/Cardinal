@@ -8,8 +8,7 @@
 
 # The third time I'm trying to make this bot...
 
-import config
-from data import logger
+from data import logger, config
 from utils import cogs
 
 import discord

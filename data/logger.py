@@ -13,8 +13,7 @@ import sys
 from datetime import datetime
 from pathlib import Path
 
-from data import info
-from utils import lang
+from data import info, lang
 
 PATH = Path("logs")
 

@@ -2,6 +2,7 @@
 /tdcb-config.yml
 /data.json
 /override.sh
+/log.csv
 
 /__pycache__
 */__pycache__

@@ -1,31 +1,37 @@
 # ***********************************************
 # *  Project     : Cardinal
-# *  File        : utils/config.py
+# *  File        : data/lang.py
 # *  Author      : Kai Parsons
 # *  Date        : 2026-02-15
 # *  Description : Mod. & game bot for Ess. Ress.
 # ***********************************************
 
-# Load config file, create if missing.
+# Load language stuff
 
 from typing import Any
 from pathlib import Path
 import yaml
 
-from data import file, logger
+from utils import color
 
-DEFAULT = Path("assets/config.yml")
-PATH = Path("config.yml")
+PATH = Path("assets/lang.yml")
 
 
 def load() -> dict[str, Any]:
-	if file.copy(src=DEFAULT, dst=PATH):
-		logger.log("config-missing")
-
 	with open(PATH, "r", encoding="utf-8") as f:
-		config = yaml.safe_load(f)
+		lang = yaml.safe_load(f)
 
-	if not config:
-		logger.log("config-empty")
+	return lang
 
-	return config
+
+def get(key: str, **kwargs) -> str:
+	lng = load()
+
+	if key not in lng.keys():
+		return key
+
+	message = lng[key]
+	message = message.format(**kwargs)
+	message = color.deserialize(message)
+
+	return message

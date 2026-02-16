@@ -10,7 +10,7 @@
 
 from github import Github
 
-from utils import lang
+from data import lang
 
 from discord import Embed, ClientUser
 

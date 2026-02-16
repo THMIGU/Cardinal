@@ -6,7 +6,7 @@
 # *  Description : Mod. & game bot for Ess. Ress.
 # ***********************************************
 
-# Load config file, create if missing.
+# File utilities
 
 import shutil
 from pathlib import Path

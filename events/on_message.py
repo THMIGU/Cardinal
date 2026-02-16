@@ -5,10 +5,10 @@
 # *  Date        : 2026-02-15
 # *  Description : Mod. & game bot for Ess. Ress.
 # ***********************************************
-import config
+
 # On-message bot event
 
-from data import logger
+from data import logger, config, csv
 
 import discord
 from discord.ext import commands
@@ -33,6 +33,7 @@ class OnMessage(commands.Cog):
 		username = message.author.name
 		user_id = message.author.id
 		msg = message.content
+		attachments = " ".join(attachment.url for attachment in message.attachments)
 		channel_id = message.channel.id
 
 		logger.log(
@@ -40,10 +41,24 @@ class OnMessage(commands.Cog):
 			msg_id=msg_id,
 			username=username,
 			user_id=user_id,
-			message=msg,
+			message=msg + attachments,
 			channel_id=channel_id,
 			server_id=server_id,
 		)
+
+		csv_path = csv.load()
+
+		with open(csv_path, "a", encoding="utf-8") as f:
+			values = [
+				server_id,
+				channel_id,
+				msg_id,
+				user_id,
+				username,
+				f"\"{msg}\"",
+				f"\"{attachments}\"",
+			]
+			f.write(",".join(map(str, values)) + "\n")
 
 		await self.bot.process_commands(message)
 

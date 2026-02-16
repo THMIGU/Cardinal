@@ -12,8 +12,7 @@ import asyncio
 from redis import Redis
 from typing import Any, Generator
 
-import config
-from data import logger
+from data import logger, config
 
 from discord.ext import commands
 
@@ -23,7 +22,7 @@ async def send_message(msg: bytes, bot: commands.Bot) -> None:
 	if message == "__shutdown__":
 		return
 
-	logger.log("redis-receive", message=message)
+	logger.log("redis-send", message=message)
 
 	conf = config.load()
 	channel_id = conf["channel"]

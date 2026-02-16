@@ -22,7 +22,9 @@ supply-token: Please supply a token in the config file!
 config-missing: Config file not found, creating a new one...
 config-empty: Config file is empty!
 
-redis-receive: "Received message from <green><bold>Redis<reset>: {message}"
+csv-missing: CSV log not found, creating a new one...
+
+redis-send: "Sending message from <green><bold>Redis<reset>: {message}"
 
 message-log: "Received message ({msg_id}) from <green><bold>{username}<reset> ({user_id}): {message} ({channel_id}, {server_id})"
 
