@@ -1,1 +1,1 @@
-ServerID,ChannelID,MessageID,UserID,Username,Content,Attachments
+Timestamp,ServerID,ChannelID,MessageID,UserID,Username,Content,Attachments

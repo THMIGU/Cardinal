@@ -8,6 +8,8 @@
 
 # On-message bot event
 
+from datetime import datetime
+
 from data import logger, config, csv
 
 import discord
@@ -50,6 +52,7 @@ class OnMessage(commands.Cog):
 
 		with open(csv_path, "a", encoding="utf-8") as f:
 			values = [
+				str(datetime.now())[:-7].replace(" ", "-"),
 				server_id,
 				channel_id,
 				msg_id,
