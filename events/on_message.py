@@ -39,19 +39,19 @@ class OnMessage(commands.Cog):
 		attachments = " ".join(attachment.url for attachment in message.attachments)
 		channel_id = message.channel.id
 
-		reply_id = ""
+		ref_id = ""
 		if reply:
-			reply_id = message.reference.message_id
+			ref_id = message.reference.message_id
 
 		logger.log(
-			"message-log",
+			"message-log" if not reply else "reply-log",
 			msg_id=msg_id,
+			ref_id=ref_id,
 			username=username,
 			user_id=user_id,
 			message=f"{msg} {attachments}",
 			channel_id=channel_id,
 			server_id=server_id,
-			reply=reply is not None,
 		)
 
 		csv_path = csv.load()
@@ -62,7 +62,7 @@ class OnMessage(commands.Cog):
 				server_id,
 				channel_id,
 				msg_id,
-				reply_id,
+				ref_id,
 				user_id,
 				username,
 				f"\"{msg}\"",
