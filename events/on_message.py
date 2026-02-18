@@ -36,7 +36,7 @@ class OnMessage(commands.Cog):
 		username = message.author.name
 		user_id = message.author.id
 		msg = message.content
-		attachments = " ".join(attachment.url for attachment in message.attachments)
+		attachment_ids = ",".join(str(attachment.id) for attachment in message.attachments)
 		channel_id = message.channel.id
 
 		ref_id = ""
@@ -49,7 +49,7 @@ class OnMessage(commands.Cog):
 			ref_id=ref_id,
 			username=username,
 			user_id=user_id,
-			message=f"{msg} {attachments}",
+			message=f"{msg} {attachment_ids}",
 			channel_id=channel_id,
 			server_id=server_id,
 		)
@@ -66,7 +66,7 @@ class OnMessage(commands.Cog):
 				user_id,
 				username,
 				f"\"{msg}\"",
-				f"\"{attachments}\"",
+				f"\"{attachment_ids}\"",
 			]
 			f.write(",".join(map(str, values)) + "\n")
 
