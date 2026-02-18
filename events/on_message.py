@@ -31,12 +31,17 @@ class OnMessage(commands.Cog):
 		if (server_id := message.guild.id) != conf["server"]:
 			return
 
+		reply = message.reference
 		msg_id = message.id
 		username = message.author.name
 		user_id = message.author.id
 		msg = message.content
 		attachments = " ".join(attachment.url for attachment in message.attachments)
 		channel_id = message.channel.id
+
+		reply_id = ""
+		if reply:
+			reply_id = message.reference.message_id
 
 		logger.log(
 			"message-log",
@@ -46,6 +51,7 @@ class OnMessage(commands.Cog):
 			message=f"{msg} {attachments}",
 			channel_id=channel_id,
 			server_id=server_id,
+			reply=reply is not None,
 		)
 
 		csv_path = csv.load()
@@ -56,6 +62,7 @@ class OnMessage(commands.Cog):
 				server_id,
 				channel_id,
 				msg_id,
+				reply_id,
 				user_id,
 				username,
 				f"\"{msg}\"",
