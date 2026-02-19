@@ -27,7 +27,9 @@ csv-missing: CSV log not found, creating a new one...
 redis-send: "Sending message from <green><bold>Redis<reset>: {message}"
 
 message-log: "Received message ({msg_id}) from <green><bold>{username}<reset> ({user_id}): {message} ({channel_id}, {server_id})"
-reply-log: "Received reply ({msg_id}) to ({ref_id}) from <green><bold>{username}<reset> ({user_id}): {message} ({channel_id}, {server_id})"
+reply-log: "Received reply ({msg_id}) to {ref_id} from <green><bold>{username}<reset> ({user_id}): {message} ({channel_id}, {server_id})"
+
+error: "<red>An error has occurred!"
 
 shutdown: Shutting down!
 

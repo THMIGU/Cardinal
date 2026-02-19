@@ -4,3 +4,4 @@ pygithub
 redis
 booktype
 colorama
+requests
