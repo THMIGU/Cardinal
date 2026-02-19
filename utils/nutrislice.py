@@ -26,6 +26,7 @@ def get_lunch(*, menu: MenuType, year: int, month: int, day: int) -> dict[str, l
 	api_url = URL.format(menu_data)
 
 	response = requests.get(api_url)
+	response.raise_for_status()
 	data = response.json()
 
 	menu_items = []
@@ -52,11 +53,12 @@ def get_lunch(*, menu: MenuType, year: int, month: int, day: int) -> dict[str, l
 			"image_url": details["image_url"]
 		}
 
-		if category == "entree":
-			lunch["entree"].append(food)
-		elif category == "beverage":
-			lunch["beverage"].append(food)
-		else:
-			lunch["other"].append(food)
+		match category:
+			case "entree":
+				lunch["entree"].append(food)
+			case "beverage":
+				lunch["beverage"].append(food)
+			case _:
+				lunch["other"].append(food)
 
 	return lunch
