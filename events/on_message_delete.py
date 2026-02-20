@@ -40,7 +40,7 @@ class OnMessageDelete(commands.Cog):
 			msg_id=msg_id,
 			username=username,
 			user_id=user_id,
-			message=f"{msg} {attachment_ids}",
+			message=f"{msg} {attachment_ids}".strip(),
 			channel_id=channel_id,
 			server_id=server_id,
 		)

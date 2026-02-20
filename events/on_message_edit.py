@@ -44,8 +44,8 @@ class OnMessageEdit(commands.Cog):
 			msg_id=msg_id,
 			username=username,
 			user_id=user_id,
-			msg_before=f"{msg_before} {attachment_ids_before}",
-			msg_after=f"{msg_after} {attachment_ids_after}",
+			msg_before=f"{msg_before} {attachment_ids_before}".strip(),
+			msg_after=f"{msg_after} {attachment_ids_after}".strip(),
 			channel_id=channel_id,
 			server_id=server_id,
 		)
