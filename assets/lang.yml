@@ -52,5 +52,21 @@ about-desc: |
   [GitHub Repo](https://www.github.com/THMIGU/Cardinal) (**{commits}** total commits)
 about-footer: Created by THMIGU
 
+## Lunch Embed
+lunch-title: Lunch on {month}/{day}
+menu-list-s: |-
+  **{category}**:
+  └ {item_1}
+menu-list-m: |-
+  **{category}**:
+  ├ {item_1}
+  └ {item_2}
+menu-list-l: |-
+  **{category}**:
+  ├ {item_1}
+  ├ {item_2}
+  └ `+{remaining} more`
+no-item: "No **{category}**"
+
 ## Shutdown Embed
 shutdown-title: 🔌 Shutting down Cardinal!
