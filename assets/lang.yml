@@ -53,7 +53,7 @@ about-desc: |
 about-footer: Created by THMIGU
 
 ## Lunch Embed
-lunch-title: Lunch on {month}/{day}
+lunch-title: "{menu} on {month}/{day}"
 menu-list-s: |-
   **{category}**:
   └ {item_1}

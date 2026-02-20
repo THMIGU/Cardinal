@@ -99,7 +99,12 @@ class Lunch(commands.Cog):
 		description = "\n".join([entrees, beverages, others])
 
 		lunch_embed = Embed(
-			title=lang.get("lunch-title", month=month, day=day),
+			title=lang.get(
+				"lunch-title",
+				menu="Lunch" if menu == MenuSelection.lunch else "Breakfast",
+				month=month,
+				day=day,
+			),
 			description=description,
 			color=0xc41e3a,
 		)
