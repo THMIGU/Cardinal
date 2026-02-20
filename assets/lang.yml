@@ -28,7 +28,8 @@ redis-send: "Sending message from <green><bold>Redis<reset>: {message}"
 
 message-log: "Received message ({msg_id}) from <green><bold>{username}<reset> ({user_id}): {message} ({channel_id}, {server_id})"
 reply-log: "Received reply ({msg_id}) to {ref_id} from <green><bold>{username}<reset> ({user_id}): {message} ({channel_id}, {server_id})"
-edit-log: "Message ({msg_id}) edited by <green><bold>{username}<reset> ({user_id}): {message} ({channel_id}, {server_id})"
+edit-log: "Message ({msg_id}) was edited by <green><bold>{username}<reset> ({user_id}): {message} ({channel_id}, {server_id})"
+delete-log: "Message ({msg_id}) was deleted by <green><bold>{username}<reset> ({user_id}): {message} ({channel_id}, {server_id})"
 
 error: "<red>An error has occurred!"
 
