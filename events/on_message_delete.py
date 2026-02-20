@@ -1,11 +1,11 @@
 # ***********************************************
 # *  Project     : Cardinal
-# *  File        : events/on_message_edit.py
+# *  File        : events/on_message_delete.py
 # *  Author      : Kai Parsons
 # *  Description : Mod. & game bot for Ess. Ress.
 # ***********************************************
 
-# On-message edit bot event
+# On-message delete bot event
 
 from data import logger, config
 

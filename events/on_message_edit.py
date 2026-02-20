@@ -22,27 +22,30 @@ class OnMessageEdit(commands.Cog):
 		self.bot = bot
 
 	@commands.Cog.listener()
-	async def on_message_edit(self, message: discord.Message) -> None:
+	async def on_message_edit(self, before: discord.Message, after: discord.Message) -> None:
 		conf = config.load()
 
-		if message.author.bot:
+		if after.author.bot:
 			return
-		if (server_id := message.guild.id) != conf["server"]:
+		if (server_id := after.guild.id) != conf["server"]:
 			return
 
-		msg_id = message.id
-		username = message.author.name
-		user_id = message.author.id
-		msg = message.content
-		attachment_ids = ",".join(str(attachment.id) for attachment in message.attachments)
-		channel_id = message.channel.id
+		msg_id = after.id
+		username = after.author.name
+		user_id = after.author.id
+		msg_before = before.content
+		msg_after = after.content
+		attachment_ids_before = ",".join(str(attachment.id) for attachment in before.attachments)
+		attachment_ids_after = ",".join(str(attachment.id) for attachment in after.attachments)
+		channel_id = after.channel.id
 
 		logger.log(
 			"edit-log",
 			msg_id=msg_id,
 			username=username,
 			user_id=user_id,
-			message=f"{msg} {attachment_ids}",
+			msg_before=f"{msg_before} {attachment_ids_before}",
+			msg_after=f"{msg_after} {attachment_ids_after}",
 			channel_id=channel_id,
 			server_id=server_id,
 		)
@@ -57,8 +60,8 @@ class OnMessageEdit(commands.Cog):
 				msg_id,
 				user_id,
 				username,
-				f"\"{msg}\"",
-				f"\"{attachment_ids}\"",
+				f"\"{msg_after}\"",
+				f"\"{attachment_ids_after}\"",
 			]
 			f.write(",".join(map(str, values)) + "\n")
 
