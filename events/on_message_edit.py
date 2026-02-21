@@ -58,6 +58,7 @@ class OnMessageEdit(commands.Cog):
 				server_id,
 				channel_id,
 				msg_id,
+				None,
 				user_id,
 				username,
 				f"\"{msg_after}\"",
