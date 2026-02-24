@@ -21,6 +21,7 @@ config-missing: Config file not found!
 config-empty: Config file is empty!
 csv-missing: CSV log not found, creating a new one...
 info-missing: Info file not found!
+info-empty: Info file is empty!
 
 redis-send: "Sending message from <green><bold>Redis<reset>: {message}"
 

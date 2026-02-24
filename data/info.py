@@ -25,4 +25,8 @@ def load() -> dict[str, Any]:
 	with open(PATH, "r", encoding="utf-8") as f:
 		info = yaml.safe_load(f)
 
+	if not info:
+		logger.log("info-empty")
+		shutdown.shutdown_force(1)
+
 	return info
