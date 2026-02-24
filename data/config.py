@@ -12,20 +12,21 @@ from pathlib import Path
 import yaml
 
 from data import logger
-from utils import file
+from utils import shutdown
 
-DEFAULT = Path("assets/config.yml")
 PATH = Path("config.yml")
 
 
 def load() -> dict[str, Any]:
-	if file.copy(src=DEFAULT, dst=PATH):
+	if not PATH.exists():
 		logger.log("config-missing")
+		shutdown.shutdown_force(1)
 
 	with open(PATH, "r", encoding="utf-8") as f:
 		config = yaml.safe_load(f)
 
 	if not config:
 		logger.log("config-empty")
+		shutdown.shutdown_force(1)
 
 	return config

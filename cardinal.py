@@ -34,15 +34,8 @@ def main() -> None:
 	logger.init()
 
 	conf = config.load()
-	if not conf:
-		return
 
 	token = conf["token"]
-
-	if token == "TOKEN":
-		logger.log("supply-token")
-		return
-
 	cardinal.run(token, log_handler=None)
 
 	logger.log("logged-out")

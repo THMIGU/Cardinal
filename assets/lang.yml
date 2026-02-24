@@ -17,12 +17,10 @@ logged-in: "Logged in as <green><bold>{user}<reset> ({id})"
 session-id: "<green><bold>Session ID:<reset> {id}"
 logged-out: Logged out of client
 
-supply-token: Please supply a token in the config file!
-
-config-missing: Config file not found, creating a new one...
+config-missing: Config file not found!
 config-empty: Config file is empty!
-
 csv-missing: CSV log not found, creating a new one...
+info-missing: Info file not found!
 
 redis-send: "Sending message from <green><bold>Redis<reset>: {message}"
 

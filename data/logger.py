@@ -74,12 +74,10 @@ def init() -> None:
 
 
 def flush(*, verbose: bool = True) -> None:
+	if verbose:
+		log("flush-logs")
+
 	sys.stdout.flush()
-
-	if not verbose:
-		return
-
-	log("flush-logs")
 
 
 def log(key: str, **kwargs) -> None:

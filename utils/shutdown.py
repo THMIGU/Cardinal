@@ -14,8 +14,16 @@ from discord.ext import commands
 
 
 async def shutdown_safely(bot: commands.Bot) -> None:
-	logger.log("shutdown")
-
 	await bot.close()
 
+	logger.log("shutdown")
+	logger.flush()
 	redis_.publish("__shutdown__")
+
+
+def shutdown_force(exit_code: int = 0) -> None:
+	logger.log("shutdown")
+	logger.flush()
+	redis_.publish("__shutdown__")
+
+	exit(exit_code)
