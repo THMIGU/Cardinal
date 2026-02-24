@@ -8,7 +8,7 @@
 # On-ready bot event
 
 from data import logger
-from services import flush, redis_
+from utils import redis_
 
 from discord.ext import commands
 
@@ -21,8 +21,6 @@ class OnReady(commands.Cog):
 
 	@commands.Cog.listener()
 	async def on_ready(self) -> None:
-		flush.flush_logs.start()
-
 		logger.log(
 			"logged-in",
 			user=self.bot.user,

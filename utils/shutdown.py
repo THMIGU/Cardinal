@@ -7,7 +7,7 @@
 
 # Shutdown Cardinal safely
 
-from services import redis_
+from utils import redis_
 from data import logger
 
 from discord.ext import commands

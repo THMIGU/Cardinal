@@ -1,6 +1,6 @@
 # ***********************************************
 # *  Project     : Cardinal
-# *  File        : services/redis_.py
+# *  File        : utils/redis_.py
 # *  Author      : Kai Parsons
 # *  Description : Mod. & game bot for Ess. Ress.
 # ***********************************************
@@ -24,7 +24,7 @@ async def send_message(msg: bytes, bot: commands.Bot) -> None:
 	logger.log("redis-send", message=message)
 
 	conf = config.load()
-	channel_id = conf["channel"]
+	channel_id = conf["c-general"]
 	channel = bot.get_channel(channel_id)
 
 	await channel.send(message)

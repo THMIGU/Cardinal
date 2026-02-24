@@ -21,3 +21,8 @@ async def load(func: Callable[[str], Coroutine[Any, Any, None]]) -> None:
 		if not filename.endswith(".py"):
 			continue
 		await func(f"events.{filename[:-3]}")
+
+	for filename in os.listdir("tasks"):
+		if not filename.endswith(".py"):
+			continue
+		await func(f"tasks.{filename[:-3]}")
