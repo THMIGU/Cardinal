@@ -24,10 +24,12 @@ class User(commands.Cog):
 		description="Get information about Cardinal",
 	)
 	async def about(self, interaction: discord.Interaction) -> None:
+		await interaction.response.defer()
+
 		user = self.bot.user
 
 		about_embed = embeds.about_embed(user)
-		await interaction.response.send_message(embed=about_embed)
+		await interaction.followup.send(embed=about_embed)
 
 
 async def setup(bot: commands.Bot) -> None:
