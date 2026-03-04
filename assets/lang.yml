@@ -50,7 +50,7 @@ about-desc: |
   and game bot of the Ess. Ress. Server!
   
   [GitHub Repo](https://www.github.com/THMIGU/Cardinal) (**{commits}** total commits)
-about-footer: Created by THMIGU
+about-footer: "Created by THMIGU | {version}"
 
 ## Lunch Embed
 lunch-title: "{menu} on {month}/{day}"

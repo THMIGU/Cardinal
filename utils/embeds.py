@@ -5,11 +5,11 @@
 # *  Description : Mod. & game bot for Ess. Ress.
 # ***********************************************
 
-# Embed factory
+# Embed functions
 
 from github import Github
 
-from data import lang
+from data import lang, info
 
 from discord import Embed, ClientUser
 
@@ -48,7 +48,9 @@ def about_embed(user: ClientUser) -> Embed:
 	)
 
 	embed.set_thumbnail(url=user.avatar)
-	embed.set_footer(text=lang.get("about-footer"))
+
+	inf = info.load()
+	embed.set_footer(text=lang.get("about-footer", version=inf["version"]))
 
 	return embed
 
