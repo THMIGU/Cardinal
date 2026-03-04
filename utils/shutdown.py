@@ -7,6 +7,8 @@
 
 # Shutdown Cardinal safely
 
+import types
+
 from utils import redis_
 from data import logger
 
@@ -27,3 +29,8 @@ def shutdown_force(exit_code: int = 0) -> None:
 	redis_.publish("__shutdown__")
 
 	exit(exit_code)
+
+
+def handle_sigterm(*_) -> None:
+	logger.log("sigterm")
+	shutdown_force(0)

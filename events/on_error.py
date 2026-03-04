@@ -31,7 +31,7 @@ class OnError(commands.Cog):
 		logger.log("error")
 
 		for line in formatted_exception[:-1]:
-			logger.log(f"<red>{line.replace("\n", "")}")
+			logger.log(f"<red>{line.replace("\n", " ")}")
 
 
 async def setup(bot: commands.Bot) -> None:

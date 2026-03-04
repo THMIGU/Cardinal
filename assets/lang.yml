@@ -33,6 +33,7 @@ delete-log: "Message ({msg_id}) was deleted by <green><bold>{username}<reset> ({
 error: "<red>An error has occurred!"
 
 shutdown: Shutting down!
+sigterm: Received SIGTERM!
 
 # Bot
 
