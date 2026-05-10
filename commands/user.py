@@ -28,8 +28,9 @@ class User(commands.Cog):
 
 		user = self.bot.user
 
-		about_embed = embeds.about_embed(user)
-		await interaction.followup.send(embed=about_embed)
+		if user:
+			about_embed = embeds.about_embed(user)
+			await interaction.followup.send(embed=about_embed)
 
 
 async def setup(bot: commands.Bot) -> None:

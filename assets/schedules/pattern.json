@@ -1,0 +1,10 @@
+{
+	"override": {},
+	"default": {
+		"0": "anchor",
+		"1": "anchor",
+		"2": "odd",
+		"3": "even",
+		"4": "anchor"
+	}
+}

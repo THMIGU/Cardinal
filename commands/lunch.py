@@ -19,32 +19,6 @@ from discord.ext import commands
 from discord import Embed
 
 
-def menu_section(category: str, menu_items: list[str]) -> str:
-	if len(menu_items) == 1:
-		return lang.get(
-			"menu-list-s",
-			category=category,
-			item_1=menu_items[0],
-		)
-	elif len(menu_items) == 2:
-		return lang.get(
-			"menu-list-m",
-			category=category,
-			item_1=menu_items[0],
-			item_2=menu_items[1],
-		)
-	elif len(menu_items) > 2:
-		return lang.get(
-			"menu-list-l",
-			category=category,
-			item_1=menu_items[0],
-			item_2=menu_items[1],
-			remaining=len(menu_items) - 2,
-		)
-	else:
-		return lang.get("no-item", category=category)
-
-
 class MenuSelection(Enum):
 	lunch = MenuType.SECONDARY_LUNCH
 	breakfast = MenuType.BREAKFAST
@@ -61,6 +35,32 @@ class Lunch(commands.Cog):
 
 	def __init__(self, bot: commands.Bot) -> None:
 		self.bot = bot
+
+	@staticmethod
+	def _menu_section(category: str, menu_items: list[str | None]) -> str:
+		if all(i is None for i in menu_items):
+			return lang.get("no-item", category=category)
+		elif len(menu_items) == 1:
+			return lang.get(
+				"menu-list-s",
+				category=category,
+				item_1=menu_items[0],
+			)
+		elif len(menu_items) == 2:
+			return lang.get(
+				"menu-list-m",
+				category=category,
+				item_1=menu_items[0],
+				item_2=menu_items[1],
+			)
+		else:
+			return lang.get(
+				"menu-list-l",
+				category=category,
+				item_1=menu_items[0],
+				item_2=menu_items[1],
+				remaining=len(menu_items) - 2,
+			)
 
 	@discord.app_commands.command(
 		name="lunch",
@@ -79,22 +79,22 @@ class Lunch(commands.Cog):
 		date = datetime.now() + timedelta(days=day.value)
 		year = date.year
 		month = date.month
-		day = date.day
+		day_ = date.day
 
 		lunch_data = nutrislice.get_lunch(
 			menu=menu.value,
 			year=year,
 			month=month,
-			day=day,
+			day=day_,
 		)
 
 		entree_items = [item["name"] for item in lunch_data["entree"]]
 		beverage_items = [item["name"] for item in lunch_data["beverage"]]
 		other_items = [item["name"] for item in lunch_data["other"]]
 
-		entrees = menu_section("Entrees", entree_items)
-		beverages = menu_section("Beverages", beverage_items)
-		others = menu_section("Other", other_items)
+		entrees = self._menu_section("Entrees", entree_items)
+		beverages = self._menu_section("Beverages", beverage_items)
+		others = self._menu_section("Other", other_items)
 
 		description = "\n".join([entrees, beverages, others])
 
@@ -103,7 +103,7 @@ class Lunch(commands.Cog):
 				"lunch-title",
 				menu="Lunch" if menu == MenuSelection.lunch else "Breakfast",
 				month=month,
-				day=day,
+				day=day_,
 			),
 			description=description,
 			color=0xc41e3a,

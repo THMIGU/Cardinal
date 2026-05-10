@@ -8,6 +8,8 @@
 # Message sending through Redis
 
 import asyncio
+
+from discord import TextChannel
 from redis import Redis
 from typing import Any, Generator
 
@@ -27,10 +29,11 @@ async def send_message(msg: bytes, bot: commands.Bot) -> None:
 	channel_id = conf["c-general"]
 	channel = bot.get_channel(channel_id)
 
-	await channel.send(message)
+	if isinstance(channel, TextChannel):
+		await channel.send(message)
 
 
-def listen() -> Generator[str | bytes, Any, None]:
+def listen() -> Generator[bytes, Any, None]:
 	conf = config.load()
 	host = conf["redis-host"]
 	port = conf["redis-port"]

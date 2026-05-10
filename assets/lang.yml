@@ -22,6 +22,8 @@ config-empty: Config file is empty!
 csv-missing: CSV log not found, creating a new one...
 info-missing: Info file not found!
 info-empty: Info file is empty!
+pattern-missing: Pattern file not found!
+schedule-missing: "Schedule '{schedule}.csv' mentioned in pattern file not found!"
 
 redis-send: "Sending message from <green><bold>Redis<reset>: {message}"
 
@@ -67,6 +69,9 @@ menu-list-l: |-
   ├ {item_2}
   └ `+{remaining} more`
 no-item: "No **{category}**"
+
+## Schedule Embed
+schedule-title: "Schedule on {month}/{day}"
 
 ## Shutdown Embed
 shutdown-title: 🔌 Shutting down Cardinal!
